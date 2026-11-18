@@ -1,0 +1,32 @@
+
+name: Feedback Management Docker Build
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v4
+
+      - name: Build backend Docker image
+        run: |
+          docker build \
+            -t feedback-backend:latest \
+            ./backend
+
+      - name: Build frontend Docker image
+        run: |
+          docker build \
+            -t feedback-frontend:latest \
+            ./frontend

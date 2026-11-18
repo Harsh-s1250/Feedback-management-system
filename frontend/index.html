@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="brand">
+        <span class="brand-icon">✉</span>
+        <div>
+            <h2>FeedbackHub</h2>
+            <small>Feedback Management System</small>
+        </div>
+    </div>
+    <button class="btn-primary" onclick="openForm()">
+        + Submit Feedback
+    </button>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <h1>Dashboard</h1>
+            <p>Manage and monitor user feedback</p>
+        </div>
+        <button class="btn-secondary" onclick="loadData()">↻ Refresh</button>
+    </section>
+
+    <div id="message" class="message"></div>
+
+    <section class="stats">
+        <div class="stat-card">
+            <span>Total Feedback</span>
+            <h2 id="total">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <span>Open</span>
+            <h2 id="open">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <span>In Progress</span>
+            <h2 id="progress">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <span>Resolved</span>
+            <h2 id="resolved">0</h2>
+        </div>
+    </section>
+
+    <section id="feedbackForm" class="panel hidden">
+        <h2>Submit New Feedback</h2>
+
+        <form id="form">
+            <div class="form-grid">
+                <input type="text" id="name"
+                    placeholder="Your Name" required minlength="2">
+
+                <input type="email" id="email"
+                    placeholder="Email Address" required>
+
+                <input type="text" id="title"
+                    placeholder="Feedback Title" required minlength="3">
+
+                <select id="category">
+                    <option>Other</option>
+                    <option>Bug</option>
+                    <option>Feature Request</option>
+                    <option>Improvement</option>
+                </select>
+
+                <select id="priority">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+
+            <textarea id="description"
+                placeholder="Describe your feedback..."
+                required minlength="5"></textarea>
+
+            <div class="actions">
+                <button class="btn-primary" type="submit">
+                    Submit Feedback
+                </button>
+                <button type="button" class="btn-secondary"
+                    onclick="closeForm()">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel">
+        <div class="section-title">
+            <h2>All Feedback</h2>
+            <span id="recordCount">0 records</span>
+        </div>
+
+        <div class="filters">
+            <input type="search" id="search"
+                placeholder="Search feedback...">
+
+            <select id="statusFilter">
+                <option value="">All Statuses</option>
+                <option>Open</option>
+                <option>In Progress</option>
+                <option>Resolved</option>
+            </select>
+
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option>Bug</option>
+                <option>Feature Request</option>
+                <option>Improvement</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div id="feedbackList" class="feedback-list">
+            <p class="empty">Loading feedback...</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Feedback Management System | Local Docker Deployment
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
